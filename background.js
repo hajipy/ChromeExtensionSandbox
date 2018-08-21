@@ -1,15 +1,15 @@
-let counter = 0;
+function sendNativeMessage() {
+    const port = chrome.runtime.connectNative("net.hajipy.sandbox");
 
-function setBadge() {
-    chrome.browserAction.setBadgeText({ text: counter.toString() });
+    port.onMessage.addListener((message) => {
+        console.log("receive " + JSON.stringify(message, null, 0));
+    });
+
+    port.onDisconnect.addListener(() => {
+        console.log("disconnected");
+    });
+
+    port.postMessage({ text: "hello from chrome extension" });
 }
 
-function incrementBadge() {
-    counter++;
-
-    setBadge();
-}
-
-setBadge();
-
-chrome.browserAction.onClicked.addListener(incrementBadge);
+chrome.browserAction.onClicked.addListener(sendNativeMessage);
