@@ -1,9 +1,0 @@
-{
-  "name": "net.hajipy.sandbox",
-  "description": "hajipy's chrome extension sandbox",
-  "path": "/Users/hajime/Documents/Sandbox/ChromeExtension/native-messaging-host.py",
-  "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://llehpacldfagofjcanoemeiajbapfpbe/"
-  ]
-}
