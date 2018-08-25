@@ -8,7 +8,11 @@
 
     <body>
         <div id="app">
-            {{ message }}
+            <ol>
+                <li v-for="(url, index) in urls" v-bind:key="index">
+                    {{ url }}
+                </li>
+            </ol>
         </div>
         <script src="../dist/renderer/bundle.js"></script>
     </body>
