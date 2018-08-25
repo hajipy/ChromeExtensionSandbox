@@ -16,8 +16,15 @@ function startWebServer() {
     const router = new KoaRouter();
 
     router.post("/", (ctx) => {
-        console.log(ctx.request.type);
-        console.log(ctx.request.body);
+        if (ctx.request.body) {
+            // @ts-ignore
+            if (ctx.request.body.url) {
+                if (window !== null) {
+                    // @ts-ignore
+                    window.webContents.send("add-url", { url: ctx.request.body.url });
+                }
+            }
+        }
 
         ctx.body = "hello world";
     });
