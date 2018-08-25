@@ -5,6 +5,8 @@ import { app, BrowserWindow } from "electron";
 import Koa from "koa";
 import KoaBodyParser from "koa-bodyparser";
 import KoaRouter from "koa-router";
+// @ts-ignore
+import KoaCors from "@koa/cors";
 
 let webServer: Koa | null;
 let window: BrowserWindow | null;
@@ -12,6 +14,7 @@ let window: BrowserWindow | null;
 function startWebServer() {
     webServer = new Koa();
     webServer.use(KoaBodyParser());
+    webServer.use(KoaCors());
 
     const router = new KoaRouter();
 
