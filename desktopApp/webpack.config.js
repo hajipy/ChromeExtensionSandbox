@@ -24,7 +24,7 @@ const resolveSetting = {
     }
 };
 
-var nodeSetting = {
+const nodeSetting = {
     __dirname: false,
 };
 
@@ -37,10 +37,13 @@ const mainProcessConfig = {
     target: "electron-main",
     module: moduleSetting,
     resolve: resolveSetting,
-    node: nodeSetting
+    node: nodeSetting,
+    externals: {
+        "any-promise": "Promise",
+    }
 };
 
-const rendererProsessConfig = {
+const rendererProcessConfig = {
     entry: "./src/renderer/main.ts",
     output: {
         path: path.resolve(__dirname, "dist/renderer"),
@@ -52,5 +55,5 @@ const rendererProsessConfig = {
 };
 
 module.exports = [
-    mainProcessConfig, rendererProsessConfig
+    mainProcessConfig, rendererProcessConfig
 ];
