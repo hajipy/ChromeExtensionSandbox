@@ -14,6 +14,7 @@
     "scripts": ["background.js"]
   },
   "permissions": [
+    "contextMenus",
     "tabs"
   ]
 }
